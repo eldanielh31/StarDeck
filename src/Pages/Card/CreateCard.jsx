@@ -49,34 +49,37 @@ function CreateCard() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const codigo = 'C-' + uuidv4().split('').reverse().join('').slice(0, 12);
-        let carta = {
-            nombre: name,
-            tipo: type,
-            imagen: cardImg,
-            descripcion: description,
-            raza: race,
-            costo: cost,
-            energia: energy,
-            estado: true,
-            id: codigo
-        }
 
         setCode(codigo);
-        console.log(carta);
 
-        htmlToImage.toPng(elementCard.current)
+        await htmlToImage.toPng(elementCard.current)
             .then((dataUrl) => {
                 const link = document.createElement('a');
                 link.download = `${codigo}.png`;
                 link.href = dataUrl;
                 link.click();
-            });
 
-        await createCarta(carta).then(
-            ()=>{
-                console.log("Enviado correcto.");
-            }
-        );
+                let carta = {
+                    nombre: name,
+                    tipo: type,
+                    imagen: dataUrl,
+                    descripcion: description,
+                    raza: race,
+                    costo: cost,
+                    energia: energy,
+                    estado: true,
+                    id: codigo
+                }
+
+                createCarta(carta).then(
+                    () => {
+                        console.log("Enviado correcto.");
+                    }
+                );
+
+            });
+        
+        
 
     }
 
