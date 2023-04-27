@@ -3,6 +3,7 @@ import "./CreateCard.css"
 import { useState } from 'react';
 import { v4 as uuidv4 } from "uuid";
 import * as htmlToImage from "html-to-image";
+import { createCarta } from '../../requestApi';
 
 /* The above code is a React component that creates a form for users to create a card. The form
 includes input fields for the card's name, image, description, type, race, cost, and energy. The
@@ -45,13 +46,23 @@ function CreateCard() {
      * The function handles form submission, generates a unique code, logs form data and downloads a
      * PNG image of a card element.
      */
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const codigo = 'C-' + uuidv4().split('').reverse().join('').slice(0, 12);
-        setCode(codigo)
-        const attribute = 'activo'
-        console.log([name, type, cardImg, description, race, cost, energy, attribute]);
+        let carta = {
+            nombre: name,
+            tipo: type,
+            imagen: cardImg,
+            descripcion: description,
+            raza: race,
+            costo: cost,
+            energia: energy,
+            estado: true,
+            id: codigo
+        }
 
+        setCode(codigo);
+        console.log(carta);
 
         htmlToImage.toPng(elementCard.current)
             .then((dataUrl) => {
@@ -60,6 +71,13 @@ function CreateCard() {
                 link.href = dataUrl;
                 link.click();
             });
+
+        await createCarta(carta).then(
+            ()=>{
+                console.log("Enviado correcto.");
+            }
+        );
+
     }
 
     const handleImageChange = (file) => {
