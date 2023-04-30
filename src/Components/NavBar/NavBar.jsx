@@ -17,6 +17,11 @@ function NavBar() {
                 </Link>
             </div>
             <div className='itemNavBar'>
+                <Link to="/createlanet">
+                    <h2>Crear Planeta</h2>
+                </Link>
+            </div>
+            <div className='itemNavBar'>
                 <Link to="/createDeck">
                     <h2>Crear Baraja</h2>
                 </Link>
