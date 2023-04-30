@@ -15,9 +15,27 @@ export const getCartas = async () => {
     }
 };
 
+export const getDeck = async () => {
+    try {
+        const response = await api.get('/deck');
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const createCarta = async (newCarta) => {
     try {
         const response = await api.post('/carta', newCarta);
+        return response.data;
+    } catch (error) {
+        // console.log(error);
+    }
+};
+
+export const createDeck = async (newDeck) => {
+    try {
+        const response = await api.post('/deck', newDeck);
         return response.data;
     } catch (error) {
         console.log(error);
