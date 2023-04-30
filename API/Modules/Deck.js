@@ -5,13 +5,18 @@ const exampleSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    description: {
+    _id: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    id_Usuario: {
         type: String,
         required: true
     },
-    date: {
-        type: Date,
-        default: Date.now
+    list_Card: {
+        type: Array,
+        require: true
     }
 });
 

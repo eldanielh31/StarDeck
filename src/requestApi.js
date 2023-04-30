@@ -24,6 +24,15 @@ export const createCarta = async (newCarta) => {
     }
 };
 
+export const createDeck = async (newDeck) => {
+    try {
+        const response = await api.post('/deck', newDeck);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const updateData = async (id, updatedData) => {
     try {
         const response = await api.put(`/data/${id}`, updatedData);

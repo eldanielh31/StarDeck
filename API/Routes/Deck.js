@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const Example = require('./example.module');
+const Deck = require('../Modules/Deck');
 
 router.get('/', async (req, res) => {
     try {
-        const examples = await Example.find();
-        res.send(examples);
+        const decks = await Deck.find();
+        res.send(decks);
     } catch (error) {
         console.log('Error getting examples:', error);
         res.status(500).send('Error getting examples');
@@ -13,9 +13,11 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const example = new Example({
+    const deck = new Deck({
         name: req.body.name,
-        description: req.body.description
+        id_Cliente: req.body.id_Cliente,
+        _id : req.body.id,
+        listCard: req.body.list_Card
     });
 
     try {
