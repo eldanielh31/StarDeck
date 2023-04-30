@@ -15,13 +15,13 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const deck = new Deck({
         name: req.body.name,
-        id_Cliente: req.body.id_Cliente,
-        _id : req.body.id,
-        listCard: req.body.list_Card
+        id_User: req.body.id_User,
+        id: req.body.id,
+        cards: req.body.cards
     });
 
     try {
-        const savedExample = await example.save();
+        const savedExample = await deck.save();
         res.send(savedExample);
     } catch (error) {
         console.log('Error creating example:', error);

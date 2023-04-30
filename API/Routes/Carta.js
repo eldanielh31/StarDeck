@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const carta = new Carta({
-        _id: req.body.id,
+        id: req.body.id,
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         imagen: req.body.imagen,

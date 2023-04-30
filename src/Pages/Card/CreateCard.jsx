@@ -52,6 +52,8 @@ function CreateCard() {
 
         setCode(codigo);
 
+        console.log(codigo)
+
         await htmlToImage.toPng(elementCard.current)
             .then((dataUrl) => {
                 const link = document.createElement('a');
@@ -70,6 +72,8 @@ function CreateCard() {
                     estado: true,
                     id: codigo
                 }
+
+                console.log(carta);
 
                 createCarta(carta).then(
                     () => {

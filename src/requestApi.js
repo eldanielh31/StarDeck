@@ -20,7 +20,7 @@ export const createCarta = async (newCarta) => {
         const response = await api.post('/carta', newCarta);
         return response.data;
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 };
 

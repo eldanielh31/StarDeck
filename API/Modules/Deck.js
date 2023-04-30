@@ -1,25 +1,24 @@
 const mongoose = require('mongoose');
 
-const exampleSchema = new mongoose.Schema({
+const DeckSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
     },
-    _id: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    id_Usuario: {
+    id_User: {
         type: String,
         required: true
     },
-    list_Card: {
+    cards: {
         type: Array,
         require: true
+    },
+    id:{
+        type : String,
+        require: true,
     }
 });
 
-const Example = mongoose.model('Example', exampleSchema);
+const Deck = mongoose.model('Deck', DeckSchema);
 
-module.exports = Example;
+module.exports = Deck;

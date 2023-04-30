@@ -1,0 +1,57 @@
+.containerDeck {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containeritemMenu {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.containermenuDeck {
+    padding: 0.5em;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid black;
+}
+
+.rigthItemMenu {
+    float: right;
+    width: 25%;
+    justify-content: left;
+    display: flex;
+}
+
+.leftItemMenu {
+    float: left;
+    width: 25%;
+    justify-content: right;
+    display: flex;
+}
+
+.centerItemMenu {
+    float: center;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.inputNameDeck {
+    width: 100%;
+    border: none;
+    border-bottom: 2px inset black;
+    border-radius: 10 px;
+    outline: none;
+}
+
+.containerCards {
+    height: 90vh;
+    overflow: scroll;
+    display: flex;
+    flex-wrap: wrap;
+}
