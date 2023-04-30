@@ -1,7 +1,8 @@
 require('dotenv').config();
 
 
-const cartaRoutes = require('./Routes/Carta')
+const cartaRoutes = require('./Routes/Carta');
+const planetaRoutes = require('./Routes/Planeta')
 const mongoUrl = process.env.DATABASE_URL;
 const port = process.env.PORT;
 
@@ -30,6 +31,7 @@ app.use(cors({
 
 
 app.use('/carta', cartaRoutes);
+app.use('/planeta', planetaRoutes);
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
