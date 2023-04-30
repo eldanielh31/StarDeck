@@ -21,7 +21,7 @@ function CreateDeck() {
             name: name,
             cards: cartasSeleccionadas,
             id: code,
-            id_User : 1
+            id_User: 1
         }
         createDeck(baraja).then(
             () => {
@@ -54,16 +54,16 @@ function CreateDeck() {
                 <form className='containeritemMenu' onSubmit={handleSubmit}>
                     <div className='rigthItemMenu'>
                         <h3>Cartas({cards.length})</h3>
-                        <button>Fill</button>
                     </div>
 
                     <div className='centerItemMenu'>
-                        <input minLength={5} maxLength={30} className='inputNameDeck' onChange={(e) => setName(e.target.value)} type="text" name="name" placeholder='Inserte el nombre de la baraja' id="" required/>
+                        <input minLength={5} maxLength={30} className='inputNameDeck' onChange={(e) => setName(e.target.value)} type="text" name="name" placeholder='Inserte el nombre de la baraja' id="" required />
                     </div>
 
                     <div className='leftItemMenu'>
                         <h3>Seleccionadas({cartasSeleccionadas.length})</h3>
-                        <button type='submit'>Crear</button>
+                        <button class="button-57" type='submit' role="button"><span class="text">Crear</span><span>Ok!</span></button>
+
                     </div>
                 </form>
 
@@ -71,7 +71,8 @@ function CreateDeck() {
             <div className='containerCards'>
                 {cards.map((card) => (
                     <div key={card.id} value={card.id} onClick={() => manejarSeleccionDeCarta(card.id)} style={{
-                        textAlign: "center",height : "20em", margin: "10px", padding: "10px", border: `5px solid ${cartasSeleccionadas.includes(card.id) ? "red" : "black"}`, borderRadius: "5px" }}>
+                        textAlign: "center", height: "20em", margin: "10px", padding: "10px", border: `5px solid ${cartasSeleccionadas.includes(card.id) ? "red" : "black"}`, borderRadius: "5px"
+                    }}>
                         <img src={card.imagen} width={200} height={250} alt="Imagen" />
                         <h3>{card.nombre}</h3>
                     </div>
