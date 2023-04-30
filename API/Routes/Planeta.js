@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
         image: req.body.image,
         abilitie: req.body.abilitie,
         type: req.body.type,
-        _id: req.body.id
+        id: req.body.id
     });
 
     try {
