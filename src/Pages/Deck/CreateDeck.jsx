@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import './CreateDeck.css'
-import { createDeck, getCarta, getDeck } from '../../requestApi';
+import { createDeck, getCartas, getDeck } from '../../requestApi';
 import { v4 as uuidv4 } from "uuid";
 
 
@@ -17,7 +17,7 @@ function CreateDeck() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!(cartasSeleccionadas.length == 18)) {
+        if (!(cartasSeleccionadas.length === 18)) {
             setError('Debe ingresar 18 cartas');
         } else if (existsName(name)) {
             setError('El nombre ya existe');
@@ -63,7 +63,7 @@ function CreateDeck() {
 
     useEffect(() => {
         
-        getCarta().then(
+        getCartas().then(
             (findCards) => {
                 setCards(findCards);
             }
