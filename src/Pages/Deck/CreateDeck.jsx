@@ -13,18 +13,20 @@ function CreateDeck() {
     const [code, setCode] = useState('');
     const [error, setError] = useState('');
     const [decks, setDecks] = useState([]);
+    const [colorText, setColorText] = useState('red')
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!(cartasSeleccionadas.length === 18)) {
+        if (!(cartasSeleccionadas.length == 18)) {
+            setColorText('red');
             setError('Debe ingresar 18 cartas');
         } else if (existsName(name)) {
+            setColorText('red');
             setError('El nombre ya existe');
         }
         else {
             sendDeck();
-            setError('')
         }
 
     };
@@ -48,6 +50,8 @@ function CreateDeck() {
             () => {
                 console.log("Enviado correcto.");
                 setDecks([...decks,  baraja]);
+                setColorText('green');
+                setError('Guardado Correctamente');
             }
         );
 
@@ -100,7 +104,7 @@ function CreateDeck() {
 
                         <div className='centerItemMenu'>
                             <input minLength={5} maxLength={30} className='inputNameDeck' onChange={(e) => setName(e.target.value)} type="text" name="name" placeholder='Inserte el nombre de la baraja' id="" required />
-                            {error && <p className="error">{error}</p>}
+                            {error && <p style={{color:`${colorText}`}} className="error">{error}</p>}
                         </div>
 
                         <div className='leftItemMenu'>
