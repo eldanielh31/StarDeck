@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from "uuid";
 import * as htmlToImage from "html-to-image";
 import { createCarta } from '../../requestApi';
+import { theme } from '../../theme';
 
 /* The above code is a React component that creates a form for users to create a card. The form
 includes input fields for the card's name, image, description, type, race, cost, and energy. The
@@ -109,8 +110,8 @@ function CreateCard() {
 
     return (
         <div className="container">
-            <div className="content">
-                <div className="containerCard">
+            <div className="content" style={{ background: `linear-gradient(to top, ${theme.colors.primary}, ${theme.colors.secondary}` }}>
+                <div className="containerCard" >
                     <div className="card-content" style={{ backgroundColor: color }} ref={elementCard}>
                         <h3>{name}</h3>
                         <img className="image-box" src={cardImg} alt="imagen de la carta" />

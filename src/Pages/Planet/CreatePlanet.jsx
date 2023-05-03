@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from "uuid";
 import * as htmlToImage from "html-to-image";
 import { createPlaneta } from '../../requestApi';
+import { theme } from '../../theme';
 
 
 function CreatePlanet() {
@@ -93,7 +94,7 @@ function CreatePlanet() {
 
     return (
         <div className="container">
-            <div className="content">
+            <div className="content" style={{ background: `linear-gradient(to top, ${theme.colors.primary}, ${theme.colors.secondary}` }}>
                 <div className="containerCard">
                     <div className="card-content" style={{ backgroundColor: color }} ref={elementCard}>
                         <h3>{name}</h3>

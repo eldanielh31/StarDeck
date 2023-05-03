@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital@0;1&display=swap');
-
 .container {
     display: flex;
     flex-direction: column;
@@ -13,20 +11,12 @@
 }
 
 .containerCard {
-    /* flex: 0 0 200px; */
     padding-right: 20px;
-    border-right: 1px solid #ccc;
+    border-right: 5px solid #000;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 45%;
-    background: #606c88;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #3f4c6b, #606c88);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border-radius: 10px;
 }
 
 .containerForm {
@@ -35,13 +25,10 @@
     justify-content: center;
     align-items: center;
     width: 55%;
-    font-family: 'Alegreya', serif;
-    font-style: italic;
-
-    background: white;
 }
 
 .wrapperForm {
+    background-color: whitesmoke;
     padding: 1em 5em 1em 5em;
     box-shadow: 10px 10px 20px;
     border-radius: 15px;
@@ -53,8 +40,7 @@
 }
 
 .card-content {
-    font-family: 'Alegreya', serif;
-    font-style: italic;
+    color: #000;
     width: 450px;
     border: 13px solid transparent;
     box-shadow: 10px 10px 20px;
@@ -82,7 +68,7 @@ h4 {
 }
 
 .info-box {
-    background-color: #fbf7d5;
+    background-color: whitesmoke;
     border: 3px solid;
     border-radius: 5px;
     box-shadow: 0 0 10px;
@@ -107,7 +93,6 @@ h4 {
 .credits {
     color: #001917;
     font-size: 15px;
-    font-style: italic;
     margin: 0 7px 10px 0;
 }
 
@@ -123,9 +108,9 @@ h4 {
 }
 
 .containerInputs input {
+    background-color: whitesmoke;
     height: 30px;
     font-size: 15px;
-    font-family: 'Alegreya', serif;
 
     border: none;
     border-bottom: 1px solid black;
@@ -135,18 +120,16 @@ h4 {
 .containerInputs select {
     height: 30px;
     font-size: 15px;
-    font-family: 'Alegreya', serif;
     border: none;
     border-bottom: 1px solid black;
     outline: none;
-    background-color: white;
+    background-color: whitesmoke;
 }
 
 .containerInputs textarea {
     min-height: 100px;
     min-width: 400px;
     font-size: 15px;
-    font-family: 'Alegreya', serif;
     border-radius: 10px;
     border: #001917 solid 2px;
     max-width: 600px;
@@ -155,7 +138,6 @@ h4 {
 
 .button-54 {
     margin-top: 1.5em;
-    font-family: 'Alegreya', serif;
     font-size: 16px;
     letter-spacing: 2px;
     text-decoration: none;

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import './CreateDeck.css'
 import { createDeck, getCartas, getDeck } from '../../requestApi';
 import { v4 as uuidv4 } from "uuid";
+import { theme } from '../../theme';
 
 
 function CreateDeck() {
@@ -18,7 +19,7 @@ function CreateDeck() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!(cartasSeleccionadas.length == 18)) {
+        if (!(cartasSeleccionadas.length === 18)) {
             setColorText('red');
             setError('Debe ingresar 18 cartas');
         } else if (existsName(name)) {
@@ -117,10 +118,15 @@ function CreateDeck() {
                 <div className='containerCards'>
                     {cards?.map((card) => (
                         <div key={card.id} value={card.id} onClick={() => manejarSeleccionDeCarta(card.id)} style={{
-                            textAlign: "center", height: "20em", margin: "10px", padding: "10px", border: `5px solid ${cartasSeleccionadas.includes(card.id) ? "red" : "black"}`, borderRadius: "5px"
+                            textAlign: "center", 
+                            height: "20em", margin: 
+                            "10px", padding: "10px", 
+                            border: `5px solid ${cartasSeleccionadas.includes(card.id) ? "red" : "black"}`, 
+                            borderRadius: "5px",
+                            background: `linear-gradient(to top, ${theme.colors.primary}, ${theme.colors.secondary}`,
                         }}>
                             <img src={card.imagen} width={200} height={250} alt="Imagen" />
-                            <h3>{card.nombre}</h3>
+                            <h3 style={{color: 'white' }}>{card.nombre}</h3>
                         </div>
                     ))}
                 </div>
