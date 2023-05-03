@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import * as htmlToImage from "html-to-image";
 import { createPlaneta } from '../../requestApi';
 import { theme } from '../../theme';
+import { Alert } from '@mui/material';
 
 
 function CreatePlanet() {
@@ -31,6 +32,10 @@ function CreatePlanet() {
     const [abilities, setAbilities] = useState([]);
     const [type, setType] = useState('Tipo');
     const [code, setCode] = useState('P-XXXXXXXXXX');
+
+    const [alert, setAlert] = useState(null);
+    const [textAlert, settextAlert] = useState('');
+    const [typeAlert, settypeAlert] = useState('');
 
 
     /**
@@ -63,8 +68,15 @@ function CreatePlanet() {
                 createPlaneta(carta).then(
                     () => {
                         console.log("Enviado correcto.");
+                        setAlert(true);
+                        settextAlert('Guardado correctamente.');
+                        settypeAlert('success');
                     }
-                );
+                ).catch(error => {
+                    setAlert(true);
+                    settextAlert('No se pudo guardar.');
+                    settypeAlert('error');
+                });;
 
             });
 
@@ -127,12 +139,12 @@ function CreatePlanet() {
                                     <label htmlFor="description" className='inputCard'>Descripción:</label>
                                     <textarea id="description" maxLength={1000} onChange={(e) => setDescription(e.target.value)} required />
                                 </div>
-                                
+
                                 <div className='containerInputs'>
                                     <label htmlFor="habilidad" className='inputCard'>Habilidad:</label>
                                     <select id="type" name="type" onChange={(event) => setAbilities(event.target.value)} >
                                         <option value="">Seleccione un tipo</option>
-                                        { list_Abilities.map((opcion) => (
+                                        {list_Abilities.map((opcion) => (
                                             <option key={opcion.value} onClick={(e) => setColor(opcion.color)} value={opcion.value}>{opcion.label}</option>
                                         ))}
                                     </select>
@@ -146,7 +158,7 @@ function CreatePlanet() {
                                         ))}
                                     </select>
                                 </div>
-
+                                {alert && <Alert severity={typeAlert}>{textAlert}</Alert>}
                                 <button className='button-54' type="submit">Crear carta</button>
                             </form>
                         </div>

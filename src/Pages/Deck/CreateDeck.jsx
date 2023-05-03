@@ -4,6 +4,7 @@ import './CreateDeck.css'
 import { createDeck, getCartas, getDeck } from '../../requestApi';
 import { v4 as uuidv4 } from "uuid";
 import { theme } from '../../theme';
+import { Alert } from '@mui/material';
 
 
 function CreateDeck() {
@@ -12,19 +13,23 @@ function CreateDeck() {
     const [cartasSeleccionadas, setCartasSeleccionadas] = useState([]);
     const [name, setName] = useState('');
     const [code, setCode] = useState('');
-    const [error, setError] = useState('');
     const [decks, setDecks] = useState([]);
-    const [colorText, setColorText] = useState('red')
+
+    const [alert, setAlert] = useState(null);
+    const [textAlert, settextAlert] = useState('');
+    const [typeAlert, settypeAlert] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         if (!(cartasSeleccionadas.length === 18)) {
-            setColorText('red');
-            setError('Debe ingresar 18 cartas');
+            setAlert(true);
+            settypeAlert('error');
+            settextAlert('Debe ingresar 18 cartas');
         } else if (existsName(name)) {
-            setColorText('red');
-            setError('El nombre ya existe');
+            setAlert(true);
+            settypeAlert('error');
+            settextAlert('El nombre ya existe');
         }
         else {
             sendDeck();
@@ -51,8 +56,9 @@ function CreateDeck() {
             () => {
                 console.log("Enviado correcto.");
                 setDecks([...decks,  baraja]);
-                setColorText('green');
-                setError('Guardado Correctamente');
+                setAlert(true);
+                settypeAlert('success');
+                textAlert('Guardado Correctamente');
             }
         );
 
@@ -105,7 +111,7 @@ function CreateDeck() {
 
                         <div className='centerItemMenu'>
                             <input minLength={5} maxLength={30} className='inputNameDeck' onChange={(e) => setName(e.target.value)} type="text" name="name" placeholder='Inserte el nombre de la baraja' id="" required />
-                            {error && <p style={{color:`${colorText}`}} className="error">{error}</p>}
+                            {alert && <Alert severity={typeAlert}>{textAlert}</Alert>}
                         </div>
 
                         <div className='leftItemMenu'>

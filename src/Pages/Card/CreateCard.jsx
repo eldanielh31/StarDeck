@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import * as htmlToImage from "html-to-image";
 import { createCarta } from '../../requestApi';
 import { theme } from '../../theme';
+import { Alert } from '@mui/material';
 
 /* The above code is a React component that creates a form for users to create a card. The form
 includes input fields for the card's name, image, description, type, race, cost, and energy. The
@@ -42,6 +43,9 @@ function CreateCard() {
     const [cost, setCost] = useState('...');
     const [energy, setEnergy] = useState('...');
     const [code, setCode] = useState('C-XXXXXXXXXX');
+    const [alert, setAlert] = useState(null);
+    const [textAlert, settextAlert] = useState('');
+    const [typeAlert, settypeAlert] = useState('');
 
     /**
      * The function handles form submission, generates a unique code, logs form data and downloads a
@@ -79,8 +83,16 @@ function CreateCard() {
                 createCarta(carta).then(
                     () => {
                         console.log("Enviado correcto.");
+                        setAlert(true);
+                        settextAlert('Guardado correctamente.');
+                        settypeAlert('success');
                     }
-                );
+                )
+                .catch(error=>{
+                    setAlert(true);
+                    settextAlert('No se pudo guardar.');
+                    settypeAlert('error');
+                });
 
             });
         
@@ -121,7 +133,7 @@ function CreateCard() {
                                 <li><span className="list-item-title">Raza: </span>{race}</li>
                                 <li><span className="list-item-title">Costo: </span>{cost}</li>
                                 <li><span className="list-item-title">Energy: </span>{energy}</li>
-                            </ul>
+                            </ul> 
                             <p className="description">{description}</p>
                             <p className="credits" align="right">{code}</p>
                         </div>
@@ -171,9 +183,10 @@ function CreateCard() {
                                     <label htmlFor="energy" className='inputCard'>Energia:</label>
                                     <input id="number" type='number' min={-100} max={100} onChange={(e) => setEnergy(e.target.value)} required />
                                 </div>
-
+                                {alert && <Alert severity={typeAlert}>{textAlert}</Alert>}
                                 <button className='button-54' type="submit">Crear carta</button>
                             </form>
+                            
                         </div>
                     </div>
 
