@@ -99,7 +99,7 @@ function CreateDeck() {
 
                     <form className='containeritemMenu' onSubmit={handleSubmit}>
                         <div className='rigthItemMenu'>
-                            <h3>Cartas({cards.length})</h3>
+                            <h3>Cartas({cards?.length})</h3>
                         </div>
 
                         <div className='centerItemMenu'>
@@ -115,7 +115,7 @@ function CreateDeck() {
 
                 </div>
                 <div className='containerCards'>
-                    {cards.map((card) => (
+                    {cards?.map((card) => (
                         <div key={card.id} value={card.id} onClick={() => manejarSeleccionDeCarta(card.id)} style={{
                             textAlign: "center", height: "20em", margin: "10px", padding: "10px", border: `5px solid ${cartasSeleccionadas.includes(card.id) ? "red" : "black"}`, borderRadius: "5px"
                         }}>
