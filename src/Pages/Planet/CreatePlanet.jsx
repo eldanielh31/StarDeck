@@ -55,7 +55,7 @@ function CreatePlanet() {
                 link.href = dataUrl;
                 link.click();
 
-                let carta = {
+                let planeta = {
                     name: name,
                     image: dataUrl,
                     description: description,
@@ -65,7 +65,7 @@ function CreatePlanet() {
                     id: codigo
                 }
 
-                createPlaneta(carta).then(
+                createPlaneta(planeta).then(
                     () => {
                         console.log("Enviado correcto.");
                         setAlert(true);
@@ -159,7 +159,7 @@ function CreatePlanet() {
                                     </select>
                                 </div>
                                 {alert && <Alert severity={typeAlert}>{textAlert}</Alert>}
-                                <button className='button-54' type="submit">Crear carta</button>
+                                <button className='button-54' type="submit">Crear planeta</button>
                             </form>
                         </div>
                     </div>

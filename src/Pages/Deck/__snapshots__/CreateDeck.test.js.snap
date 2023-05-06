@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pantalla Deck Renderiza correctamente 1`] = `
+<div
+  class="containerDeck"
+>
+  <div
+    class="containermenuDeck"
+  >
+    <form
+      class="containeritemMenu"
+    >
+      <div
+        class="rigthItemMenu"
+      >
+        <h3>
+          Cartas(
+          0
+          )
+        </h3>
+      </div>
+      <div
+        class="centerItemMenu"
+      >
+        <input
+          class="inputNameDeck"
+          id=""
+          maxlength="30"
+          minlength="5"
+          name="name"
+          placeholder="Inserte el nombre de la baraja"
+          required=""
+          type="text"
+        />
+      </div>
+      <div
+        class="leftItemMenu"
+      >
+        <h3>
+          Seleccionadas(
+          0
+          )
+        </h3>
+        <button
+          class="button-57"
+          type="submit"
+        >
+          <span
+            class="text"
+          >
+            Crear
+          </span>
+          <span>
+            Ok!
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div
+    class="containerCards"
+  />
+</div>
+`;
