@@ -1,29 +1,33 @@
 const express = require('express');
 const router = express.Router();
-const Example = require('./example.module');
+const Planeta = require('../Modules/Planeta');
 
 router.get('/', async (req, res) => {
     try {
-        const examples = await Example.find();
-        res.send(examples);
+        const planetas = await Planeta.find();
+        res.send(planetas);
     } catch (error) {
         console.log('Error getting examples:', error);
-        res.status(500).send('Error getting examples');
+        res.status(500).send('Error getting planetas');
     }
 });
 
 router.post('/', async (req, res) => {
-    const example = new Example({
+    const planeta = new Planeta({
         name: req.body.name,
-        description: req.body.description
+        description: req.body.description,
+        image: req.body.image,
+        abilitie: req.body.abilitie,
+        type: req.body.type,
+        id: req.body.id
     });
 
     try {
-        const savedExample = await example.save();
-        res.send(savedExample);
+        const savedPlaneta = await planeta.save();
+        res.send(savedPlaneta);
     } catch (error) {
         console.log('Error creating example:', error);
-        res.status(500).send('Error creating example');
+        res.status(500).send('Error creating planeta');
     }
 });
 

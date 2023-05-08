@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
-const exampleSchema = new mongoose.Schema({
+const PlanetaSchema = new mongoose.Schema({
+    id:{
+        type:String,
+        required: true,
+        unique: true
+    },
     name: {
         type: String,
         required: true
@@ -9,12 +14,20 @@ const exampleSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    date: {
-        type: Date,
-        default: Date.now
+    image: {
+        type: String,
+        required: true
+    },
+    abilitie: {
+        type: String,
+        required: false
+    },
+    type: {
+        type: String,
+        required: true
     }
 });
 
-const Example = mongoose.model('Example', exampleSchema);
+const Planeta = mongoose.model('Planeta', PlanetaSchema);
 
-module.exports = Example;
+module.exports = Planeta;

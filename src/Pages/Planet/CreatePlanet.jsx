@@ -1,19 +1,14 @@
 import React, { useRef } from 'react'
-import "./CreateCard.css"
+import "./CreatePlanet.css"
 import { useState } from 'react';
 import { v4 as uuidv4 } from "uuid";
 import * as htmlToImage from "html-to-image";
-import { createCarta } from '../../requestApi';
+import { createPlaneta } from '../../requestApi';
 import { theme } from '../../theme';
 import { Alert } from '@mui/material';
 
-/* The above code is a React component that creates a form for users to create a card. The form
-includes input fields for the card's name, image, description, type, race, cost, and energy. The
-component also includes a dropdown menu for selecting the card's rarity and race. When the user
-submits the form, a unique code is generated, the form data is logged, and a PNG image of the card
-element is downloaded. The component uses useState and useRef hooks to manage state and reference
-the card element. */
-function CreateCard() {
+
+function CreatePlanet() {
 
     const elementCard = useRef(null);
 
@@ -21,31 +16,27 @@ function CreateCard() {
     corresponding labels. This array is used to populate a dropdown menu in the form where the user
     can select the type of the card they are creating. */
     const types = [
-        { value: 'ultra-rara', label: 'Ultra-Rara', color: ' #f1c40f' },
-        { value: 'muy-rara', label: 'Muy Rara', color: ' #b353be ' },
-        { value: 'rara', label: 'Rara', color: '  #294ef7 ' },
-        { value: 'normal', label: 'Normal', color: ' #2a8121 ' },
-        { value: 'basica', label: 'Básica', color: ' #ed5b41 ' },
+        { value: 'raro', label: 'Raro', color: ' #a93226 ' },
+        { value: 'basico', label: 'Basico', color: '#7f8c8d' },
+        { value: 'popular', label: 'Popular', color: '#148f77' },
     ]
 
-    const races = [
-        { value: 'elfo', label: 'Elfo' },
-        { value: 'paladin', label: 'Paladin' },
-        { value: 'barbaro', label: 'Barbaro' },
+    const list_Abilities = [
+
     ]
 
-    const [name, setName] = useState('Nombre de Carta');
-    const [type, setType] = useState('Tipo');
-    const [color, setColor] = useState(' #ed5b41 ')
+    const [name, setName] = useState('Nombre del Planeta');
+    const [color, setColor] = useState('#7f8c8d')
     const [cardImg, setCardImg] = useState('https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
     const [description, setDescription] = useState('Descripcion de la carta');
-    const [race, setRace] = useState('...');
-    const [cost, setCost] = useState('...');
-    const [energy, setEnergy] = useState('...');
-    const [code, setCode] = useState('C-XXXXXXXXXX');
+    const [abilities, setAbilities] = useState([]);
+    const [type, setType] = useState('Tipo');
+    const [code, setCode] = useState('P-XXXXXXXXXX');
+
     const [alert, setAlert] = useState(null);
     const [textAlert, settextAlert] = useState('');
     const [typeAlert, settypeAlert] = useState('');
+
 
     /**
      * The function handles form submission, generates a unique code, logs form data and downloads a
@@ -53,11 +44,9 @@ function CreateCard() {
      */
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const codigo = 'C-' + uuidv4().split('').reverse().join('').slice(0, 12);
+        const codigo = 'P-' + uuidv4().split('').reverse().join('').slice(0, 12);
 
         setCode(codigo);
-
-        console.log(codigo)
 
         await htmlToImage.toPng(elementCard.current)
             .then((dataUrl) => {
@@ -66,37 +55,32 @@ function CreateCard() {
                 link.href = dataUrl;
                 link.click();
 
-                let carta = {
-                    nombre: name,
-                    tipo: type,
-                    imagen: dataUrl,
-                    descripcion: description,
-                    raza: race,
-                    costo: cost,
-                    energia: energy,
+                let planeta = {
+                    name: name,
+                    image: dataUrl,
+                    description: description,
+                    abilities: abilities,
+                    type: type,
                     estado: true,
                     id: codigo
                 }
 
-                console.log(carta);
-
-                createCarta(carta).then(
+                createPlaneta(planeta).then(
                     () => {
                         console.log("Enviado correcto.");
                         setAlert(true);
                         settextAlert('Guardado correctamente.');
                         settypeAlert('success');
                     }
-                )
-                .catch(error=>{
+                ).catch(error => {
                     setAlert(true);
                     settextAlert('No se pudo guardar.');
                     settypeAlert('error');
-                });
+                });;
 
             });
-        
-        
+
+
 
     }
 
@@ -123,17 +107,15 @@ function CreateCard() {
     return (
         <div className="container">
             <div className="content" style={{ background: `linear-gradient(to top, ${theme.colors.primary}, ${theme.colors.secondary}` }}>
-                <div className="containerCard" >
+                <div className="containerCard">
                     <div className="card-content" style={{ backgroundColor: color }} ref={elementCard}>
                         <h3>{name}</h3>
                         <img className="image-box" src={cardImg} alt="imagen de la carta" />
                         <h4>{type}</h4>
                         <div className="info-box">
                             <ul className="list">
-                                <li><span className="list-item-title">Raza: </span>{race}</li>
-                                <li><span className="list-item-title">Costo: </span>{cost}</li>
-                                <li><span className="list-item-title">Energy: </span>{energy}</li>
-                            </ul> 
+                                <li><span className="list-item-title">Habilidades: </span>{abilities}</li>
+                            </ul>
                             <p className="description">{description}</p>
                             <p className="credits" align="right">{code}</p>
                         </div>
@@ -142,7 +124,7 @@ function CreateCard() {
                 </div>
                 <div className="containerForm">
                     <div className='wrapperForm'>
-                        <h1>Crear carta</h1>
+                        <h1>Crear Planeta</h1>
                         <div className='containerFrom'>
                             <form onSubmit={handleSubmit}>
                                 <div className='containerInputs'>
@@ -157,36 +139,28 @@ function CreateCard() {
                                     <label htmlFor="description" className='inputCard'>Descripción:</label>
                                     <textarea id="description" maxLength={1000} onChange={(e) => setDescription(e.target.value)} required />
                                 </div>
+
                                 <div className='containerInputs'>
-                                    <label htmlFor="description" className='inputCard'>Tipo:</label>
-                                    <select id="type" name="type" onChange={(event) => setType(event.target.value) } required>
+                                    <label htmlFor="habilidad" className='inputCard'>Habilidad:</label>
+                                    <select id="type" name="type" onChange={(event) => setAbilities(event.target.value)} >
+                                        <option value="">Seleccione un tipo</option>
+                                        {list_Abilities.map((opcion) => (
+                                            <option key={opcion.value} onClick={(e) => setColor(opcion.color)} value={opcion.value}>{opcion.label}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className='containerInputs'>
+                                    <label htmlFor="habilidad" className='inputCard'>Tipo:</label>
+                                    <select id="type" name="type" onChange={(event) => setType(event.target.value)} required>
                                         <option value="">Seleccione un tipo</option>
                                         {types.map((opcion) => (
                                             <option key={opcion.value} onClick={(e) => setColor(opcion.color)} value={opcion.value}>{opcion.label}</option>
                                         ))}
                                     </select>
                                 </div>
-                                <div className='containerInputs'>
-                                    <label htmlFor="race" className='inputCard'>Raza:</label>
-                                    <select id="race" name="race" onChange={(event) => setRace(event.target.value)} required>
-                                        <option value="">Seleccione una raza</option>
-                                        {races.map((opcion) => (
-                                            <option key={opcion.value} value={opcion.value}>{opcion.label}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div className='containerInputs'>
-                                    <label htmlFor="cost" className='inputCard'>Costo:</label>
-                                    <input id="number" type='number' min={0} max={100} onChange={(e) => setCost(e.target.value)} required />
-                                </div>
-                                <div className='containerInputs'>
-                                    <label htmlFor="energy" className='inputCard'>Energia:</label>
-                                    <input id="number" type='number' min={-100} max={100} onChange={(e) => setEnergy(e.target.value)} required />
-                                </div>
                                 {alert && <Alert severity={typeAlert}>{textAlert}</Alert>}
-                                <button className='button-54' type="submit">Crear carta</button>
+                                <button className='button-54' type="submit">Crear planeta</button>
                             </form>
-                            
                         </div>
                     </div>
 
@@ -196,4 +170,4 @@ function CreateCard() {
     )
 }
 
-export default CreateCard
+export default CreatePlanet
