@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Barra de navegacion Renderiza correctamente 1`] = `
+<header
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-hip9hq-MuiPaper-root-MuiAppBar-root"
+  style="background: rgb(0, 0, 0);"
+>
+  <div
+    class="MuiContainer-root MuiContainer-maxWidthXl css-19r6kue-MuiContainer-root"
+  >
+    <div
+      class="MuiToolbar-root MuiToolbar-regular css-r6ewbb-MuiToolbar-root"
+    >
+      <a
+        class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-1m03wwp-MuiTypography-root"
+        href="/"
+      >
+        Jugar
+      </a>
+      <div
+        class="MuiBox-root css-1t6c9ts"
+      >
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1bl1uc0-MuiButtonBase-root-MuiButton-root"
+          href="/createCard"
+          tabindex="0"
+        >
+          Crear Carta
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </a>
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1bl1uc0-MuiButtonBase-root-MuiButton-root"
+          href="/createPlanet"
+          tabindex="0"
+        >
+          Crear Planeta
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </a>
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1bl1uc0-MuiButtonBase-root-MuiButton-root"
+          href="/createDeck"
+          tabindex="0"
+        >
+          Crear Baraja
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+`;
