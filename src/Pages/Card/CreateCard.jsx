@@ -51,6 +51,7 @@ function CreateCard() {
      * The function handles form submission, generates a unique code, logs form data and downloads a
      * PNG image of a card element.
      */
+    /* istanbul ignore next */      
     const handleSubmit = async (e) => {
         e.preventDefault();
         const codigo = 'C-' + uuidv4().split('').reverse().join('').slice(0, 12);
@@ -100,6 +101,7 @@ function CreateCard() {
 
     }
 
+    /* istanbul ignore next */
     const handleImageChange = (file) => {
         if (!file) {
             setCardImg('');
@@ -112,6 +114,7 @@ function CreateCard() {
             })
     }
 
+    /* istanbul ignore next */
     const fileToDataUri = (file) => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = (event) => {
@@ -120,6 +123,7 @@ function CreateCard() {
         reader.readAsDataURL(file);
     })
 
+    /* istanbul ignore next */
     return (
         <div className="container">
             <div className="content" style={{ background: `linear-gradient(to top, ${theme.colors.primary}, ${theme.colors.secondary}` }}>

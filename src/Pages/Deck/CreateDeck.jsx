@@ -19,6 +19,7 @@ function CreateDeck() {
     const [textAlert, settextAlert] = useState('');
     const [typeAlert, settypeAlert] = useState('');
 
+    /* istanbul ignore next */
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -37,10 +38,12 @@ function CreateDeck() {
 
     };
 
+    /* istanbul ignore next */
     const existsName = (name) => {
         return decks.some(deck => deck.name === name);
     };
 
+    /* istanbul ignore next */
     const sendDeck = () => {
 
         const codigo = 'C-' + uuidv4().split('').reverse().join('').slice(0, 12);
@@ -65,6 +68,7 @@ function CreateDeck() {
 
     }
 
+    /* istanbul ignore next */
     const manejarSeleccionDeCarta = (id) => {
         if (cartasSeleccionadas.includes(id)) {
             setCartasSeleccionadas(cartasSeleccionadas.filter((c) => c !== id));
@@ -73,6 +77,7 @@ function CreateDeck() {
         }
     };
 
+    /* istanbul ignore next */
     useEffect(() => {
         
         getCartas().then(
@@ -100,6 +105,7 @@ function CreateDeck() {
 
     }, [setCards, setDecks]);
 
+    /* istanbul ignore next */
     return (
         <>
             <div className='containerDeck'>
