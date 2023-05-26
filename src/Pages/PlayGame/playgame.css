@@ -1,0 +1,58 @@
+.containerGame {
+    position: relative;
+    width: 100vw;
+    height: 91vh;
+    background-color: black;
+}
+
+.top-sectionGame {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    /* background-color: green; */
+}
+
+.bottom-sectionGame {
+    position: relative;
+    top: 50%;
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+.bottom-leftGame,
+.bottom-rightGame {
+    flex: 1;
+}
+
+.bottom-leftGame {
+    /* background-color: red; */
+}
+.bottom-leftGame h3 {
+    color: white;
+    margin-left: 6em;
+}
+
+.bottom-rightGame {
+    /* background-color: blue; */
+    color: white;
+}
+
+.containerCardsHand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.boxCardHand {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+.boxCardHand h2{
+    margin: 0;
+}
