@@ -52,7 +52,7 @@ function CreateDeck() {
         let baraja = {
             name: name,
             cards: cartasSeleccionadas,
-            id: code,
+            id: codigo,
             id_User: 1
         }
 
@@ -62,7 +62,7 @@ function CreateDeck() {
                 setDecks([...decks,  baraja]);
                 setAlert(true);
                 settypeAlert('success');
-                textAlert('Guardado Correctamente');
+                settextAlert('Guardado Correctamente');
             }
         );
 

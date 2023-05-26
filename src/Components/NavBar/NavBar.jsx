@@ -8,7 +8,11 @@ import Button from '@mui/material/Button';
 import { theme } from '../../theme';
 import { ThemeProvider } from 'styled-components';
 
-const pages = [{ label: 'Crear Carta', ref: '/createCard' }, { label: 'Crear Planeta', ref: '/createPlanet' }, { label: 'Crear Baraja', ref: '/createDeck' }];
+const pages = [
+    { label: 'Crear Carta', ref: '/createCard' }, 
+    { label: 'Crear Planeta', ref: '/createPlanet' }, 
+    { label: 'Crear Baraja', ref: '/createDeck' },
+];
 
 const NavBar = () => {
 
@@ -21,7 +25,7 @@ const NavBar = () => {
                             variant="h6"
                             noWrap
                             component="a"
-                            href="/"
+                            href="/play"
                             sx={{
                                 mr: 2,
                                 display: { xs: 'none', md: 'flex' },

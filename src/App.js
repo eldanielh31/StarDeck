@@ -7,6 +7,8 @@ import Main from './Pages/Principal/Main';
 import NavBar from './Components/NavBar/NavBar';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
+import Play from './Pages/Play/Play';
+import PlayGame from './Pages/PlayGame/PlayGame';
 
 function App() {
   return (
@@ -16,10 +18,11 @@ function App() {
           <NavBar />
           <Routes>
             <Route path='/' element={<Main />} />
+            <Route path='/play' element={<Play/>}/>
             <Route path="/createcard" element={<CreateCard />} />
             <Route path="/createplanet" element={<CreatePlanet />} />
             <Route path='/createDeck' element={<CreateDeck />} />
-            <Route path='/' element={<CreateCard />} />
+            <Route path='/playgame' element={<PlayGame/>}/>
           </Routes>
         </BrowserRouter>
       </div>
